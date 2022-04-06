@@ -3,6 +3,7 @@
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,37 +21,27 @@ import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
 
-
+// Here we launch all the codes on the project
  class MainActivity : AppCompatActivity() {
+  // Was set to be used later in this project
+     internal var compositeDisposable = CompositeDisposable()
 
-    internal  var compositeDisposable= CompositeDisposable()
-//    internal var iPokemonList: IPokemonList
-    internal lateinit var poken_recyclerview: RecyclerView
+     internal lateinit var poken_recyclerview: RecyclerView
 
-    init {
-//        val retrofit= RetrofitClient.instance
-//        iPokemonList=retrofit.create(IPokemonList::class.java)
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        poken_recyclerview = findViewById(R.id.pokeemon_recyclerView2)
-////        poken_recyclerview.setHasFixedSize(true)
-//        poken_recyclerview.layoutManager= LinearLayoutManager(this)
-//        val itemDecoration= ItemOffsetDecoration(this,R.dimen.spacing)
-//        poken_recyclerview.addItemDecoration(itemDecoration)
-        fetchData()
-    }
-
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_main)
+         //get the view of the reycycler and get it ready fro binding
+         poken_recyclerview = findViewById(R.id.pokeemon_recyclerView2)
+  //Fetch the resources from the server
+         fetchData()
+     }
      override fun onResume() {
          super.onResume()
 
      }
 
-//     @SuppressLint("LogNotTimber")
+    //Making a request from the server
      private fun fetchData() {
 
          lifecycleScope.launchWhenCreated {
@@ -68,77 +59,18 @@ import retrofit2.Response
                  val results = response.body()!!.results
                  var i = 1
                  for (result in results) {
-                     result.url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${i}.png"
+                     result.url =
+                         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${i}.png"
                      i++
                  }
                  println("Successful")
-
                  val adapter = PokenListAdapter(results)
                  poken_recyclerview.adapter = adapter
                  poken_recyclerview.layoutManager = GridLayoutManager(this@MainActivity, 2)
+
              } else {
                  println("Failed!")
              }
          }
-
-//         iPokemonList.listPokemon().enqueue(object : Callback<List<Pokemons>> {
-
-//             override fun onResponse(call: Call<pokedex?>, response: Response<pokedex?>) {
-//                 if (response.isSuccessful) {
-//                     Log.d("AAAAAAAAAAAA", "fetchData: ${response.body()}")
-//                     val adapter =
-//                         response.body()?.pokemon?.let { PokenListAdapter(this@MainActivity, it ) }
-//                     println(adapter)
-//                     poken_recyclerview.adapter= adapter
-//                 }
-//             }
-//
-//             override fun onFailure(call: Call<pokedex?>, t: Throwable) {
-//
-//             }
-
-//             override fun onResponse(
-//                 call: Call<List<pokegitto>>,
-//                 response: Response<List<Pokemons>>
-//             ) {
-//                 if (response.isSuccessful) {
-//                     Log.d("AAAAAAAAAAAA", "fetchData: ${response.body()}")
-////                     val adapter =
-////                         response.body()!!
-////                     println(adapter)
-////                     poken_recyclerview.adapter= adapter
-//
-//                 }
-//             }
-
-//             override fun onFailure(call: Call<List<pokegitto>>, t: Throwable) {
-//
-//             }
-
-//             override fun onResponse(
-//                 call: Call<List<Pokemons>>,
-//                 response: Response<List<Pokemons>>
-//             ) {
-//                 println(response.body()!!.toList())
-//             }
-//
-//             override fun onFailure(call: Call<List<Pokemons>>, t: Throwable) {
-//                 println(t.message)
-//             }
-//         })
-
-//         var pokemon_recyclerview =
-//             compositeDisposable.add(iPokemonList.listPokemon
-//                 .subscribeOn(Schedulers.io())
-//                 .observeOn(AndroidSchedulers.mainThread())
-//                 .subscribe { pokedex ->
-////                     Common.pokemonList = pokedex.pokemon!!
-//                     Log.d("AAAAAAAAAAAA", "fetchData: ${pokedex.pokemon!!}")
-//                     val adapter = PokenListAdapter(this, pokedex.pokemon!!)
-//                     poken_recyclerview.adapter= adapter
-//
-//                 }
-//
-//             );
      }
-}
+ }

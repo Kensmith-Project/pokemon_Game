@@ -3,22 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PokemonList">
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical">-->
-<!--&lt;!&ndash;        <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/pokeemon_recyclerView"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_gravity="center_horizontal"&ndash;&gt;-->
-<!--&lt;!&ndash;            >&ndash;&gt;-->
-
-<!--&lt;!&ndash;        </androidx.recyclerview.widget.RecyclerView>&ndash;&gt;-->
+    tools:context=".pokefragment.PokemonList">
 
 
-<!--    </LinearLayout>-->
 
 </FrameLayout>

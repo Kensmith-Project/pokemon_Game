@@ -1,5 +1,5 @@
 package com.example.week7experimentalproject.Model
-
+  // contains all attributes of aech pokemon
 data class Pokemon (
     var id :Int =0,
     var num :String?=null,
