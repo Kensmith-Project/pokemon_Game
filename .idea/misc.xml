@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/layout/fragment_pokemon_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/pokemon_list_item.xml" value="0.1" />
         <entry key="secondimplementation/src/main/res/drawable-v24/ic_blank_image.xml" value="0.139" />
-        <entry key="secondimplementation/src/main/res/layout/activity_main.xml" value="0.25679347826086957" />
+        <entry key="secondimplementation/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>

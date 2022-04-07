@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             val uploadImg = findViewById<ImageView>(R.id.iv_img_to_upload) as ImageView
 
         }
-        val btnUpload = findViewById<Button>(R.id.iv_Upload_btn)
+        val btnUpload = findViewById<Button>(R.id.iv_select_btn)
         btnUpload.setOnClickListener {
             pickImageGallery()
         }
